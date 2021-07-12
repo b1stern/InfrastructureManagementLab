@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Think Lab 2176",
-    description: "Hybrid Application Management - tutorials for IBM Think confenrence Academy Labs",
+    title: "Infrastructure Management Lab",
+    description: "Hybrid Application Management - tutorials for IBM Infrastructure Management Labs",
     keywords: "gatsby,theme,carbon",
   },
   plugins: [
@@ -24,12 +24,12 @@ module.exports = {
         isSearchEnabled: true,
         repository: {
           baseUrl:
-            'https://github.com/b1stern/Think21-Lab-2176',
+            'https://github.com/b1stern/InfrastructureManagementLab',
           subDirectory: '/',
           branch: 'master'
         },
       },      
     }
   ],
-  pathPrefix: "/Think21-Lab-2176"
+  pathPrefix: "/InfrastructureManagementLab"
 };

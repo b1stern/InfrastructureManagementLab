@@ -1,7 +1,7 @@
 - title: Intro and Login
   pages:
     - path: /
-- title: Think Lab 2176
+- title: Infrastructure Management Lab
   pages:
     - title: Provisioning to VMware
       path: /tutorials/vmware
