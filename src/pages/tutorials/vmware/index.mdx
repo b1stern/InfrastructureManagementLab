@@ -22,8 +22,8 @@ The Service Library is where a typical end-user would go to take advantage of th
 
 We will begin by deploying a single virtual machine into VMware.
 
-3) Find the service named "Think Lab VMware"
-  ![](images/2021-04-28-20-40-30.png)
+3) Find the service named "VMware Single VM with DHCP"
+  ![](images/VMwareService.png)
 
 
 4) Double click on the box
@@ -36,7 +36,7 @@ This screen contains a list of parameters that are required to provision a virtu
 
 
 6) Select a namespace of "vmware" for the VM.  CP4MCM always associates resources with a project/namespace.  The namespace can be used to restrict permissions for the provisioned resource.
-  ![](images/2021-04-28-21-01-39.png)
+  ![](images/Namespace.png)
 
 
 7) Next specify a service instance. This is the name of the service being provisioned.  You can use this service instance to perform maintenance and delete the service.  For this lab, specify your username as the service name to ensure we have a unique service instance name
@@ -131,23 +131,23 @@ Now let's take a look at how the service was created.  You'll learn how to modif
 
 
 4) Scroll down and view the services that exist.  Or, use the catagories on the left to filter the services
-  ![](images/2021-05-01-20-52-33.png)
+  ![](images/FilteredServices.png)
 
 
-5) Locate the "Think Lab VMware" service.  This is the service that you just provisioned via the Service Library.
+5) Locate the "VMware Single VM with DHCP" service.  This is the service that you just provisioned via the Service Library.
 
 
 6) You are going to make a copy of this service so that you can make modifications without impacting other users.  
 
 
 7) Click the 3 dots on the right side and then select "Duplicate"
-  ![](images/2021-04-29-08-18-01.png)
+  ![](images/DuplicateService.png)
 
 
-8) A dialog will open.  At the bottom of the dialog you will see a name that was automatically populated with "Copy of Think Lab VMware".   Note:  you may have to scroll down within the dialog in order to see the "Name" field.  Change the name to a name that begins with your username. For example, "student37 VMware service".  Then, click the "Duplicate" button.
+8) A dialog will open.  At the bottom of the dialog you will see a name that was automatically populated with "Copy of VMware Single VM with DHCP".   Note:  you may have to scroll down within the dialog in order to see the "Name" field.  Change the name to a name that begins with your username. For example, "student37 VMware service".  Then, click the "Duplicate" button.
 
 
-  ![](images/2021-04-29-08-21-11.png)
+  ![](images/DuplicateService2.png)
 
 
   You are now in the editor for your service.
@@ -218,7 +218,7 @@ Now, let's explore the Composition user interface.  You can use the Composition 
 
 
   You should see a list of the available services.
-  ![](images/2021-05-05-15-25-15.png)
+  ![](images/Services.png)
 
 
 2) At the top of the screen type "MEAN" into the search bar to filter the least of services
@@ -302,7 +302,7 @@ There is tremendous value in building and executing Services within the Cloud Pa
 
 
 3) Select the icon, then check the "VMware vSphere" checkbox and you'll see a list of templates that can be run in a VMware environment
-  ![](images/2021-04-30-11-32-51.png)
+  ![](images/VMware_Templates.png)
 
 
   There are two advantages of executing a Terraform template directly:
@@ -333,11 +333,11 @@ You have modified your Service and changed the menus.  Now, let's make it availa
 
 
 4) On the right side, click on the 3 vertical dots next to version 3.0.0.2 and select "Publish"
-  ![](images/2021-04-30-11-53-38.png)
+  ![](images/Publish.png)
 
 
   A dialog opens and asks to confirm whether you want to publish vesrion 3.0.0.2.
-  ![](images/2021-04-30-11-56-01.png)
+  ![](images/Publish2.png)
 
 
 5) Click "Publish"
