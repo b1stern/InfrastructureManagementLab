@@ -4,7 +4,7 @@ import ResourceLinks from 'gatsby-theme-carbon/src/components/LeftNav/ResourceLi
 const links = [
   {
     title: 'IBM Docs',
-    href: 'https://www.ibm.com/docs/en/cloud-paks/cp-management/2.2.x',
+    href: 'https://www.ibm.com/docs/en/cloud-paks/cp-management/2.3.x',
   },
 ];
 
