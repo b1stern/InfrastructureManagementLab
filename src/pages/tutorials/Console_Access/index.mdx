@@ -1,0 +1,122 @@
+---
+title: Managing SRE console access
+description:
+---
+
+In this exercise you will learn about Cloud Pak for Multicloud Management's Console Access.  It simplifies the troubleshooting process across regions and deployment models with increased visualization and remediation tools.
+
+1) Begin by selecting the hamburger menu in the upper left corner 
+
+<img src="images/2021-05-03-10-32-50.png" width="50%" height="50%"></img>
+
+2) From the dropdown menu, select "Take action" and then "Console access"
+
+<img src="images/2021-05-03-12-44-51.png" width="50%" height="50%"></img>
+
+1) Review this step only, this step was done for you.  In order to use the Console Access capability, servers must be onboarded.  The onboarding process has already been performed for one of the servers in the environment.  See steps a) and b) below to see what the onboarding process looks like.
+   
+   a) As an administrator, you could "Onboard" a server for console access.  This process involves clicking onto the vertical "..." and then select "Onboard"
+
+   <img src="images/2021-05-03-12-49-07.png" width="30%" height="30%"></img>
+
+   b) Provide the required credential information i.e. Your user ID, Password or SSH key.  Login credentials can be saved for later usage in Hashicorp Vault, an open source tool for secrets management, encryption, and privileged access management.
+
+   <img src="images/2021-05-03-12-52-27.png" width="50%" height="50%"></img>
+
+2) You can search for a server by name, or you can click on "Onboard only" checkbox to filter the list of servers shown.  Or, use a combination of both filters for a large environment.  
+
+![](images/2021-05-03-16-36-01.png)
+
+1) On the Console access page, you can open an SSH-over-HTTPS session by clicking onto the link under the SSH column to access the terminal for the particular server  from IBM Cloud Pak console (the name and IP address on the pictures may be different then what you see in the environment - but there will be one server onboarded and available).
+
+![](images/2021-05-04-17-26-00.png)
+
+NOTE: Please lookout for popup blocker.  You can open the window by clicking "Preferences" and then the link "Show https:/..."
+![](images/2021-05-03-16-40-23.png)
+
+6) Once the console screen opens, you can run various commands supported by the remote system i.e "ps", "df -k", "top", etc.  If you were troubeshooting an issue, you could see what processes are running, filesystem usage, system utilization, or run commands that perform various tasks i.e clean up files/directory, restart a process, etc.  On this environment you'll have limited access.
+
+![](images/2021-05-04-17-34-50.png)
+
+7) Type "exit" to end your remote session or you may have noticed that it disconnects after an inactivity period.
+
+##  Terminal Session Replay
+Terminal Session replay/audit: You can replay a terminal session as needed. In this way, you can avoid duplicate actions among your team, collaborate in a more efficient way, and thus accelerate troubleshooting and problem resolution process. In addition, you can check what everyone does in SSH sessions for auditing considerations.
+
+Here's a scenario: Imagine you are working a crit-sit.  You run a set of complex commands and diagnostics to quicly resolve the issue.  Then after things have calmed down, you can go back and review the commands you ran and perhaps turn them into a runbook to automate those tasks in the future.
+
+1) Begin by selecting the hamburger menu in the upper left corner 
+
+<img src="images/2021-05-03-10-32-50.png" width="50%" height="50%"></img>
+
+2) From the dropdown menu, select "Take action" and then "Terminal session replay"
+
+<img src="images/2021-05-04-09-20-57.png" width="50%" height="50%"></img>
+
+3) You can filter the session activity between two dates/times, you can search for a specific user, filter based on provider, and/or datacenter.
+
+![](images/2021-05-04-09-29-16.png)
+
+4) Once you find a session of interest, you can click on the play button under the Replay column.
+![](images/2021-05-04-09-35-59.png)
+
+5) The selected session's video should auto play, however, you can play/pause the video by clicking on the play/pause button.  Or, you can fast-forward or reverse the video by dragging the playback timeline.
+
+![](images/2021-05-05-16-46-35.png)
+
+
+That completes this section of the lab.
+
+
+In this portion of the lab, you saw how easy it is to quickly gain console access to rapidly troubleshoot an issue or run commands on a specific system.  And, you see how easy it is to audit the actions performed during a given session.
+
+
+To continue other portions of the lab, select one of the lab exercises in the upper left corner or select one of the images below.
+
+
+<Row>
+
+<Column colLg={3} colMd={3} noGutterMdLeft>
+<ArticleCard
+    color="dark"
+    subTitle="Automation with VMware"
+    title="Want to learn how to automate infrastructure management in VMWare vSphere?"
+    href="/tutorials/vmware"
+    actionIcon="arrowRight"
+    >
+
+![](../../images/multi-cloud.jpg)
+
+</ArticleCard>
+
+</Column>
+
+<Column colLg={3} colMd={3} noGutterMdLeft>
+<ArticleCard
+    color="dark"
+    subTitle="Automation with the Public Cloud"
+    title="Want to learn how to automate infrastructure management in Public clouds?"
+    href="/tutorials/ibmcloud"
+    actionIcon="arrowRight"
+    >
+
+![](../../images/public-cloud.jpg)
+
+</ArticleCard>
+</Column>
+
+<Column colLg={3} colMd={3} noGutterMdLeft>
+<ArticleCard
+    color="dark"
+    subTitle="Managing chargeback"
+    title="Do you want to create and execute a chargeback report on the VM and container workloads?"
+    href="/tutorials/Chargeback"
+    actionIcon="arrowRight"
+    >
+
+![](../../images/prereqs.jpg)
+
+</ArticleCard>
+</Column>
+
+</Row>

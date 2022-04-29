@@ -4,7 +4,9 @@ description:
 ---
 
 <FeatureCard title="Automating infrastructure in public clouds" color="dark">
-  ![banner](images/automate-banner.jpg)
+
+![banner](images/automate-banner.jpg)
+
 </FeatureCard>
 
 <AnchorLinks>
@@ -30,8 +32,8 @@ IBM Cloud Pak for Watson AIOps Infrastructure Management is based on upstream OS
 
 In this tutorial, you will explore the following key capabilities:
 
-- Understand Cloud Pak for Watson AIOps Infrastructure Management capabilities for public clouds
-- Learn how to deploy a new service in a public cloud
+- Understand Cloud Pak for Watson AIOps Infrastructure Automation capabilities for public clouds
+- Learn how to deploy a new service in a public cloud combaning Terraform and Ansible
 - Learn how to manage lifecycle of the service
 - Learn how to apply configuration and control policies to the managed VMs
 - Learn how Cloud Pak help SRE teams managing infrastructure in public clouds with full audit trail.
@@ -40,9 +42,9 @@ In this tutorial, you will explore the following key capabilities:
 
 ## Managing infrastructure in public clouds
 
-  There are multiple technologies available to provision and manage IT services and infrastructure in public clouds. Each of them has some advantages and there is no way one can fully replace the others. This creates a real challenge for enterprises: "How to achieve consistency and traceability across all environments?". IBM Cloud Pak for Watson AIOps - Infrastructure Management helps integrate different tools and technologies in the closed-loop management cycle.
+  There are multiple technologies available to provision and manage IT services and infrastructure in public clouds. Each of them has some advantages and there is no way one can fully replace the others. This creates a real challenge for enterprises: "How to achieve consistency and traceability across all environments?". IBM Cloud Pak for Watson AIOps - Infrastructure Automation helps integrate different tools and technologies in the closed-loop management cycle.
 
-  In the following exercise, you learn how to provision a new service in a public cloud using Terraform. You will extend the service (which initially provisions set of 2 virtual machines) with the configuration management task driven by Ansible. Then, you will explore how tags are mapped to provide a consistent view of the resources across all infrastructure providers and how to apply the configuration policies to ensure configuration governance.
+  In the following exercise, you learn how to provision a new service in a public cloud using Terraform. You will extend the service (which initially provisions a single virtual machine) with the configuration management task driven by Ansible. Then, you will explore how tags are mapped to provide a consistent view of the resources across all infrastructure providers and how to apply the configuration policies to ensure configuration governance.
 
 ### Exploring the cloud providers
 
@@ -68,11 +70,11 @@ In this tutorial, you will explore the following key capabilities:
 
   Additional providers are planned for second half of 2021
 
-  Click any of the available providers (for example us-east-ohio). You will see details of all resources provisioned in selected region (to which you have access rights assigned). To explore further, click the **Instances**.
+  Click any of the available providers (for example IBM Cloud US-East - the list may vary). You will see details of all resources provisioned in selected region (to which you have access rights assigned). To explore further, click the **Instances**.
 
   ![](images/2021-05-04-10-29-20.png)
 
-  If you cannot see any instances on the list, it means that your access rights are limited. 
+  If you cannot see any instances on the list, it means that your access rights are limited.
   
   ![](images/2021-05-04-13-54-33.png)
 
@@ -94,37 +96,37 @@ In this tutorial, you will explore the following key capabilities:
 
   ![](images/2021-05-04-10-53-46.png)
 
-  Unfold versions of the **IBMCloud-2Node-App** service (1), then click  **three dots** icon on the right in the **(default)** row (2), and select **View** (3).
+  Unfold versions of the **IBMCloud-Nginx-Lab** service (1), then click  **three dots** icon on the right in the **(default)** row (2), and select **View** (3).
 
-  ![](images/2021-05-04-10-57-40.png)
+  ![](images/2021-10-07-12-24-27.png)
 
   This view shows all the details of the service. Click the **Composition** tab to see the provisioning flow.
 
-  ![](images/2021-05-04-11-31-54.png)
+  ![](images/2021-10-07-12-28-06.png)
 
   You can see that service flow includes two tasks:
-  - a terraform template **ibmcloud-vpc-thinklab**, and
-  - Ansible inventory task
+  - a terraform template **ibmcloud-vpc-nginx-lab** (1), and
+  - Ansible inventory task (2)
 
-  ![](images/2021-05-04-11-34-39.png)
+  ![](images/2021-10-07-12-33-15.png)
 
-  First task provisions a terraform template in IBM Cloud (To see the source code of the template click this [link](https://github.com/dymaczew/cmh-test-github/tree/master/terraform/ibmcloud-vpc-thinklab)) When it completes, the second one registers newly provisioned VMs in Ansible inventory so you can run the configuration tasks against them. Let's add an Ansible task to the flow. Since the service is already published, to modify it you have to first create a new version. Go back to the **Service Library** view.
+  First task provisions a terraform template in IBM Cloud (To see the source code of the template click this [link](https://github.com/dymaczew/cmh-test-github/tree/master/terraform/ibmcloud-vpc-nginx-lab)) When it completes, the second one registers newly provisioned VMs in Ansible Tower inventory so you can run the configuration tasks against them. Let's add a new Ansible task to the flow to configure new virtual machine as web server running Nginx. Since the service is already published, to modify it you have to first create a new version. Go back to the **Service Library** view.
 
-  ![](images/2021-05-04-11-43-55.png)
+  ![](images/2021-10-07-12-36-25.png)
 
-  In the row **IBMCloud-2Node-App** click the **3 dots** icon on the right, and select **Add version**.
+  In the row **IBMCloud-Nginx-Lab** click the **3 dots** icon on the right, and select **Add version**.
 
-  ![](images/2021-05-04-11-46-35.png)
+  ![](images/2021-10-07-12-39-08.png)
 
   Provide unique version name (1) - for example provide your student id number as a last field. Notice, that the version number must be in a format X.Y.Z.V. Finally, click **Add** (2).
 
   ![](images/2021-05-04-11-49-28.png)
 
-  New version of the service is opened in Service editor. Go to the **Composition** tab (1), unfold the available ansible tasks on the left (2) and drag-and-drop **Configure Nginx** task next to the Ansible inventory task in the flow (3). 
+  New version of the service is opened in Service editor. Go to the **Composition** tab (1), unfold the available Ansible tasks on the left (2) and drag-and-drop **Nginx Parametrized** task next to the Ansible inventory task in the flow (3). 
 
-  ![](images/2021-05-04-11-54-38.png)
+  ![](images/2021-10-07-12-43-46.png)
 
-  This is a very simple Ansible playbook available [here](https://github.com/dymaczew/rba-ansible-sample/blob/master/nginx.yaml), which was imported into connected Ansible tower and exposed as a Template (All templates  you create in connected Ansible Tower are automatically shown in the Service Editor). For covenience, the source code was also shown below:
+  This is a very simple Ansible playbook available [here](https://github.com/dymaczew/rba-ansible-sample/blob/master/nginx_parametrized.yaml), which was imported into connected Ansible Tower and exposed as a Template (All templates  you create in connected Ansible Tower are automatically shown in the Service Editor). For covenience, the source code was also shown below:
 
   ```yaml
     ---
@@ -134,7 +136,7 @@ In this tutorial, you will explore the following key capabilities:
       become: true
 
       vars:
-       - MyMessage: "Welcome to Think Lab 2176 instance!"
+       - MyMessage: "Welcome to Infrastructure Management Lab instance!"
 
       tasks:
       - name: Add epel-release repo
@@ -164,13 +166,13 @@ In this tutorial, you will explore the following key capabilities:
 
   Click the newly added task to edit parameters.
 
-  ![](images/2021-05-04-11-56-21.png)
+  ![](images/2021-10-07-12-48-48.png)
 
   There are three parameters available:
 
   - inventory name
   - credentials
-  - extra variables (to be passed to Ansible playbook - for simplicity our task does not require any parameters)
+  - extra variables (to be passed to Ansible playbook)
 
   Click **inventory_name** link (1) and then click **Link parameter** (2).
 
@@ -188,48 +190,38 @@ In this tutorial, you will explore the following key capabilities:
 
   ![](images/2021-05-04-12-13-45.png)
 
-  When both parameters are in place, click the **Save** button on the top. Then, click "three dots" icon next to Publish button and select **Test deploy**.
+  Finally, we want to customize the Nginx default web page with personalized message. Ansible template contains variable MyMessage that can be overriden on runtime. To pass custom value click **extra_variables** (1) and then **Add**.
 
-  ![](images/2021-05-04-12-24-54.png) ![](images/2021-05-04-12-25-21.png)
+  ![](images/2021-10-07-12-54-44.png)
+
+  In the newly open map field provide the following values:
+  
+  - Key field: **MyMessage** (1)
+  - Value field: **${input_parameters.message}** (2)
+  
+  Then click **Save** (3)
+
+  ![](images/2021-10-07-13-05-05.png)
+
+  The value field refers to the parameter name that you are just going to create to allow users to provide the value during service request. Click **Parameters** tab on top and then **Create parameter**.
+
+  ![](images/2021-10-07-13-09-57.png)
+
+  In the new dialong provide the `message` as **Parameter key** (1) and for example `Welcome message` as **Display name** (2). This will be the label for the field shown to the user. Finally click **Add** (3).
+
+  ![](images/2021-10-07-13-16-09.png)
+
+  When new parameter is defined, click the **Save** button on the top (1). Then, click "three dots" (2) icon next to Publish button and select **Test deploy** (3).
+
+  ![](images/2021-10-07-13-21-30.png)
 
   Provisioning dialog opens. Click **Next**.
 
-  ![](images/2021-05-04-12-37-08.png)
+  ![](images/2021-10-07-13-23-41.png)
 
-  Provide the required parameters. For **service name** (1) and **prefix** (2) provide a unique name (for example your user id - this will help you identify your instance among all VMs provisioned by other students). For **Public ssh key** (3) you have to provide a public ssh key to be injected into the Virtual machines. Since all the students are using the jump workstation generated from the same template, to avoid duplicates let's generate a new one. Open the Terminal window (link should be on the Desktop - you may need to minimize the browser to see it) and run the following command (hit ENTER twice when prompted for passphrase):
+  Provide the required parameters. Select any **Namespace** (e.g. `default`) (1)- this is used for access control but we won't explore that in this exercise. For **Service instance name** (2) provide a unique name (for example your user id - this will help you identify your instance among all VMs provisioned by other students). You can change **Environment** type (3) - that will be dynamically mapped to the filters in the Infrastructure management UI. Provide the personalized **Welcome message** to be shown by Nginx server (4). Finally hit **Deploy** button (5).
 
-  ```sh
-  ssh-keygen -t rsa -f student
-  ```
-
-  Sample output should look like below:
-
-  ```sh
-  ssh-keygen -t rsa -f student
-  Generating public/private rsa key pair.
-  Enter passphrase (empty for no passphrase): 
-  Enter same passphrase again: 
-  Your identification has been saved in student.
-  Your public key has been saved in student.pub.
-  The key fingerprint is:
-  SHA256:ttvYM7oiJjgOFW+wuRhUYU/OGQdMlEilArmV12zsMS8 dymaczew@Wlodeks-MBP
-  The keys randomart image is:
-  +---[RSA 3072]----+
-  |...*B@o.         |
-  |o =.Bo@          |
-  | =oo B +         |
-  |o .*  E .        |
-  |. + o  .S        |
-  | + o   . .       |
-  |o..     .        |
-  |+ . o .  =o      |
-  |.o o . .=ooo     |
-  +----[SHA256]-----+
-  ```
-
-  List the content of **student.pub** file (cat student.pub) and copy the key to the provisioning dialog in the **Public SSH key** field. You can change **Environment** type (4) - that will be dynamically mapped to the filters in the Infrastructure management UI. Finally hit **Deploy** button (5).
-
-  ![](images/2021-05-04-12-49-41.png)
+  ![](images/2021-10-07-14-53-00.png)
 
   On the Order confirmation dialog select **Go to instances** to verify the provisioning process.
 
@@ -237,21 +229,23 @@ In this tutorial, you will explore the following key capabilities:
 
   Click the row with your service instance.
 
-  ![](images/2021-05-04-12-54-58.png)
+  ![](images/2021-10-07-14-54-12.png)
 
   You should see your tasks progressing. You can click **Log file** tab to see the detailed log from each activity.
 
-  ![](images/2021-05-04-12-57-27.png)
+  ![](images/2021-10-07-14-55-13.png)
 
   If everything works as expected, at the end of terraform provisioning log you should see the public IP of newly provisioned service.
 
-  ![](images/2021-05-04-13-00-08.png)
+  ![](images/2021-10-07-15-01-34.png)
+
+  **NOTE:** If something goes wrong and you receive Error look through the logs to find the problem and ask Instructor for help. If you want to remove the failed instance of your service, first select **Terminate** to remove any provisioned resources and then select **Delete** from service instance actions.
 
   If the service is **Active** (with green dot next to it), you can point a new browser tab to see if you can connect to your new service instance.
 
-  ![](images/2021-05-04-13-02-29.png)
+  ![](images/2021-10-07-15-06-40.png)
 
-  Congratulations! You have just provisioned new service in public cloud with terraform template and configured it with Ansible task.
+  Congratulations! You have just provisioned new service in public cloud with Terraform template and configured application service there (Nginx web server) with Ansible task.
 
 ***
 
@@ -283,7 +277,7 @@ In this tutorial, you will explore the following key capabilities:
 
 ### Verifying new instances in Infrastructure Management view
 
-  Go to the browser tab where you have Infrastructure Management opened and select Instances for cloud provider "us-south" (Compute -> Cloud -> Instances). On the list, you should see two instances created by you in the previous step (HINT: the refresh is done periodically, so it may take few minutes for your virtual machines to show up). Click any of them to see details.
+  Go to the browser tab where you have Infrastructure Management opened and select Instances for cloud provider "IBM Cloud US-East" (Compute -> Cloud -> Instances). On the list, you should see new VM instance created by you in the previous step (HINT: the refresh is done periodically, so it may take few minutes for your virtual machines to show up). Click any of them to see details.
 
   ![](images/2021-05-04-15-02-59.png)
 
