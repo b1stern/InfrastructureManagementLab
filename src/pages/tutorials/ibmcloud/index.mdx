@@ -20,7 +20,7 @@ description:
 
 ## Lab Overview
 
-IBM Cloud Pak for Watson AIOps Infrastructure Management delivers the insight, control, and automation enterprises need to address challenges of managing hybrid cloud environments, which are far more complex than traditional data center. This technology enables enterprises with existing virtual infrastructures to improve visibility and control, and those just starting virtualization deployments to build and operate a well-managed virtual infrastructure.
+IBM Cloud Pak for Watson AIOps Infrastructure Management delivers the insight, control, and automation enterprises need to address challenges of managing hybrid cloud environments, which are far more complex than traditional data center. This technology enables enterprises with virtualization or public clouds to improve visibility and control, and operate a well-managed infrastructure.
 
 IBM Cloud Pak for Watson AIOps Infrastructure Management is based on upstream OSS project [ManageIQ](https://www.manageiq.org) and includes the following feature sets:
 
@@ -49,7 +49,7 @@ In this tutorial, you will explore the following key capabilities:
 
   Log in to the Cloud Pak user interface with your assigned user id (studentX). From the "hamburger" menu in the top-left corner select **Automate infrastructure -> Infrastructure management**
 
-  ![](images/2021-05-04-09-51-03.png)
+  ![](images/infraMgmt.png)
 
   New browser tab opens with Infrastructure management user interface. Here, depending on the assigned permissions you can view and manage virtual machines in any of the connected environments. Let's explore infrastructure in public clouds. From the left-hand side menu select **Compute -> Cloud -> Providers**
 
@@ -65,19 +65,21 @@ In this tutorial, you will explore the following key capabilities:
   - Openstack
   - VMware vCloud
 
-  ![](images/2021-05-04-10-23-45.png)
+  ![](images/cloudProviders.png)
 
-  Additional providers are planned for second half of 2021
+  The list will change as support for more cloud providers are added.
 
-  Click any of the available providers (for example IBM Cloud US-East - the list may vary). You will see details of all resources provisioned in selected region (to which you have access rights assigned). To explore further, click the **Instances**.
+  Click any of the available providers (for example IBM Cloud US-East - the list may vary). You will see details of all resources provisioned in selected region (to which you have access rights assigned). You will see that you have access to the cloud flavors (templates), networks, cloud volumes, and more.  You can click on any of these to explore more details.
+  
+  To explore further, click the **Instances**.
 
   ![](images/2021-05-04-10-29-20.png)
 
-  If you cannot see any instances on the list, it means that your access rights are limited.
+  The exact list of resources will vary depending on the state of the environment and your permissions.
   
-  ![](images/2021-05-04-13-54-33.png)
+  ![](images/instances.png)
 
-  You can click any instance to look at the details.
+  You can click any instance to look at the details.  We recommend selecting one of the **Running** instances.
 
   ![](images/2021-05-04-13-56-23.png)
 
@@ -85,7 +87,8 @@ In this tutorial, you will explore the following key capabilities:
 
 ### Exploring the service library
 
-  Go back to the main browser tab **IBM Cloud Pak for ...**. This time from the "hamburger" menu select **Automate infrastructure -> Manage services**.
+  Go back to the main browser tab **IBM Cloud Pak | Automation**. This time from the "hamburger" menu select **Automate infrastructure -> Library**.
+   ![](images/library.png) 
 
   In case you access this module for the first time, "Welcome" screen may pop-up. If that happens, click the **Service library** link.
 
@@ -97,7 +100,7 @@ In this tutorial, you will explore the following key capabilities:
 
   Unfold versions of the **IBMCloud-Nginx-Lab** service (1), then click  **three dots** icon on the right in the **(default)** row (2), and select **View** (3).
 
-  ![](images/2021-10-07-12-24-27.png)
+  ![](images/viewPublished.png)
 
   This view shows all the details of the service. Click the **Composition** tab to see the provisioning flow.
 
@@ -106,6 +109,7 @@ In this tutorial, you will explore the following key capabilities:
   You can see that service flow includes two tasks:
   - a terraform template **ibmcloud-vpc-nginx-lab** (1), and
   - Ansible inventory task (2)
+  - Nginx parameters task (3)
 
   ![](images/2021-10-07-12-33-15.png)
 
