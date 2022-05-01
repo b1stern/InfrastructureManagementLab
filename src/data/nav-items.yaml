@@ -1,7 +1,7 @@
 - title: Intro and Login
   pages:
     - path: /
-- title: Infrastructure Management Lab
+- title: Infrastructure Automation Lab
   pages:
     - title: Provisioning to VMware
       path: /tutorials/vmware
@@ -9,5 +9,3 @@
       path: /tutorials/ibmcloud
     - title: Cost Management
       path: /tutorials/Chargeback
-    - title: Console Access
-      path: /tutorials/Console_Access

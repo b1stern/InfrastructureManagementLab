@@ -13,7 +13,6 @@ description:
   <AnchorLink>Lab Overview</AnchorLink>
   <AnchorLink>Managing infrastructure in public clouds</AnchorLink>
   <AnchorLink>Exploring the cloud providers</AnchorLink>
-  <AnchorLink>Exploring GRC dashboard</AnchorLink>  
   <AnchorLink>Summary</AnchorLink>
 </AnchorLinks>
 
@@ -249,49 +248,9 @@ In this tutorial, you will explore the following key capabilities:
 
 ***
 
-## Exploring GRC dashboard
-
-  Each managed virtual machine is automatically subject to defined compliance policies - no matter in which cloud it is provisioned. To open GRC dashboard select "hamburger" menu and then **Governance and Compliance -> Govern Risk**
-
-  ![](images/2021-05-04-15-21-56.png)
-
-  Click **Create policy** button in the top-right corner.
-
-  ![](images/2021-05-04-15-24-53.png)
-
-  You can select different options from the left side of the editor and see the content of the policy being populated for you on the right. For example you can pick "VMResourcePolicy - vm allocation sizes" as shown below
-
-  ![](images/2021-05-04-15-29-49.png)
-
-  This policy checks if the allocated resources like number of CPU, RAM or storage is conformant with company guidelines. If you want to save the policy, provide the unique name (1), select any namespace (2) and specify the Resource binding (3) to match "owner: studentX" where studentX matches your user id. Finally, click **Create** in the top-right corner. You may also click **Cancel** as one policy was already created for all sutdents.
-
-  ![](images/2021-05-04-15-36-27.png)
-
-  To view policy compliance status scroll down the **Govern risk** view. You should see either your policy or the generic one (policy-vmresourcepolicy-vm-size). Click the **VM compliances** to see the status of each virtual machine.
-
-  ![](images/2021-05-04-15-44-02.png)
-
-  Based on tags, each provisioned VM will be automatically checked for compliance and any violations will be highlithed.
-
-  ![](images/2021-05-04-15-41-23.png)
-
-### Verifying new instances in Infrastructure Management view
-
-  Go to the browser tab where you have Infrastructure Management opened and select Instances for cloud provider "IBM Cloud US-East" (Compute -> Cloud -> Instances). On the list, you should see new VM instance created by you in the previous step (HINT: the refresh is done periodically, so it may take few minutes for your virtual machines to show up). Click any of them to see details.
-
-  ![](images/2021-05-04-15-02-59.png)
-
-  You can notice the tags that were automatically provisioned in the public cloud, as well as SmartTags that were mapped - providing the consistatnt view on all resources. SmartTags are used by Infrastructure Management for filtering, assigining policies and granting access control.
-
-  You can also notice that the VM was checked for compliance with defined policies and you can view the history of the compliance for audit purposes.
-
-  ![](images/2021-05-04-15-47-07.png)
-
-***
-
 ## Summary
 
-  In this exercise you have modified the service definition to combine provisioning of infrastructure in public cloud using Terraform template with the configuration task leveraging Ansible playbook. You have also explored the capability to define and report configuration compliance policies for virtual machines.
+  In this exercise you have modified the service definition to combine provisioning of infrastructure in public cloud using Terraform template with the configuration task leveraging Ansible playbook. 
 
 
 To continue other portions of the lab, select one of the lab exercises in the upper left corner or select one of the images below.
@@ -329,17 +288,4 @@ To continue other portions of the lab, select one of the lab exercises in the up
 </ArticleCard>
 </Column>
 
-<Column colLg={3} colMd={3} noGutterMdLeft>
-<ArticleCard
-    color="dark"
-    subTitle="Managing SRE console access"
-    title="Do you want to learn how to provide SRE secure terminal access to Virtual Machines?"
-    href="/tutorials/Console_Access"
-    actionIcon="arrowRight"
-    >
-
-![](../../images/secure-access.jpg)
-
-</ArticleCard>
-</Column>
 </Row>
