@@ -12,12 +12,55 @@ In this portion of the lab, you'll learn how to create and execute chargeback re
   ![](images/2021-05-01-21-35-01.png)
 
 
-2) Then, select Manage costs -> Chargeback
-  ![](images/2021-05-01-21-34-35.png)
+2) Then, select **Overview (1)**.  Then, select **Chargeback (2)**. Finally, select **Reports (3)**
+  ![](images/chargebackReports.png)
 
 
-  You will see a page with one more more reports at the bottom of the page.
-  ![](images/2021-05-02-17-58-34.png)
+You will see a page with a list of reports that have been executed.  There are two types of reports.  One is named **Container Chargeback** and the other is **VM Chargeback**.  The **Container Chargeback** report will report on the costs of the containerized workloads.  The other report is a report on the Virtual Machine Chargeback.  
+  ![](images/reports.png)
+
+Double Click on one of the **Container Chargeback** reports.  You'll see a list of charges for the workloads that are running on kubernetes environments.  The report is organized around the "Projects (Namespaces" running in OpenShift or Kubernetes.  In the report, you can see the usage and cost for the CPU cores, Memory, and Network utilzation.
+  ![](images/containers.png)
+
+Either use the Back button in your browser, or click on **Reports** in the breadcrumb at the top to navigate back to the list of reports.
+
+Double click on one of the **VM Chargeback** reports.  In this report, you can see the usage and cost, grouped by organization, for CPU, Memory, Disk, and Network.
+  ![](images/vms.png)
+
+
+Select the **Download** button in the upper left corner and you'll see that you can download the report as Text, CSV, or PDF format.
+  ![](images/downloads.png)
+
+Now, let's examine how the costs for the various services were determined.  The costs are defined in **Rate Cards**.  In upper left corner, select **Overview**, then **Chargeback**, then **Rates**
+  ![](images/rates.png)
+
+On the screen, you'll see that there are two different types of **Rate Cards**. There are **Compute** and **Storage** Rate Cards.  
+  ![](images/rateCards.png)
+
+Open one of the **Compute** Rate cards by double clicking on the entry.
+  ![](images/rateCard.png)
+
+Within the rate card, you'll see that there are rates related to CPU, Network, Memory, and more.  You'll also see that there are fixed rates and variable rates.  The fixed rates are a fixed cost
+based on number of CPU cores, memory, etc. for the virtual machine. Variable rates are for charges that are based on actual utilization.  For example, if you are charged when network utilization
+goes above 1 Gig per day, then you can apply a variable rate.
+
+If desired, you can open the Storage rate card and view the options.
+
+Now, let's examine the assignments.   Click on **Overview**, then **Chargeback** and finally **Assignments**
+  ![](images/assignments.png)
+
+The assignments are used to assign a **Rate Card** to a set of servers and/or containers in the environment.   For example, you might have one **Rate Card** for your IBM Cloud VMs,
+another **Rate Card** for your on-prem VMs, and another for your AWS VMs.
+
+In this environment, you'll notice that we have **Rate Cards** assigned by **Tagged VMs and Instances**.  Specifically, we have chosen the **Location** tag and assigned a different rate card for each location.
+  ![](images/assignTo.png)
+
+If you want to see other options, click on the **Tagged VMs and Instances** dropdown and examine the choices.  You'll see that you do the assignments based on specific **Providers** such as IBM Cloud, VMware, or AWS.  You can 
+also select **The Enterprise** which would apply a single **Rate Card** to all systems in the enterprise.
+
+
+
+
 
 
 3) Let's begin by viewing the report. Click on the report titled "VM Chargeback".  You can either run the report by clicking on the Run report button.  Or, you can select one of the reports at the bottom of the page that have already been executed.  Given that it takes a little while to execute the report, we recommend that you select an existing report.   Select the most recently executed report.
