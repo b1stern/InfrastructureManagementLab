@@ -37,17 +37,25 @@ can be executed in any order.  The lab exercises include:
 
   After logging into the virtual machine, launch the Chrome browser.  When Chrome opens, 3 tabs will automatically open.  
   - The first tab is the lab guide.
-  - The 2nd tab is the Infrastructure Management component of the Cloud Pak for Watson AIOPs.
+  - The 2nd tab is the Automation component of the Cloud Pak for Watson AIOPs.
   - The 3rd tab contains a list of student usernames and passwords.  
-
-  Go to the first tab within the browser and within the browser, right-click on the following link:   https://cpd-cp4waiops.itzroks-270004w3qr-kgj97r-4b4a324f027aea19c5cbc0c3275c4656-0000.us-south.containers.appdomain.cloud/zen/
-  and select "Open Link in New Tab"
-  ![](images/newTab.png)
 
   Then, go to the 3rd tab and lookup your username and password.  
   
-  Use that username and password to log into the Automation tools within CP4AIOps.
+  Use that username and password to log into the Automation tools within CP4AIOps.  
 
+  When logging in, you will see multiple types of authentication.  Select **Enterprise LDAP** as your authentication mechanism.   
+  ![](images/newTab.png)
+
+  After selecting **Enterprise LDAP**, you may see a warning that your connection is not private. This is due to the fact that we are using self-signed certificates.  When you receive this warning, scroll to the bottom of the page and click on the **Advanced** button.
+  ![](images/secure.png) 
+
+  Then, at the very bottom of the page, click on the link.
+  ![](images/secure2.png)
+
+  Then you will see the login prompt asking for your **username** and **password**.
+
+  Using the information from the 3rd tab in your browser, specify your **username** and **password**.
 
 
 ## Begin the Exercises
