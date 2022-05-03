@@ -98,13 +98,20 @@ In this tutorial, you will explore the following key capabilities:
 
   ![](images/2021-05-04-10-53-46.png)
 
-  Unfold versions of the **IBMCloud-Nginx-Lab** service (1), then click  **three dots** icon on the right in the **(default)** row (2), and select **View** (3).
 
-  ![](images/viewPublished.png)
+  To ensure that you don't have conflicts with other students that are taking this lab, you are going to create a copy of the service that we will be using for the lab.
+
+  Fine the serviced named **"IBMCloud-Nginx-Lab"**.  Then, select the three vertical dots on the right side and select **"Duplicate"**.
+  ![](images/duplicate.png) 
+
+  A dialog will open.  Scroll to the bottom of the dialog and specify a unique name.  We recommend you prefix **"IBMCloud-Nginx-Lab"** with your student name.  For example, **"Student37-IBMCloud-Nginx-Lab"** as seen below.  Then, click the **"Duplicate"** button.
+   ![](images/duplicateName.png)  
+
+  You will immediately be taken to the editor for your new service.  By default, you will be editing version 1.0.0.3 of the service because that is the **default** version.
 
   This view shows all the details of the service. Click the **Composition** tab to see the provisioning flow.
 
-  ![](images/2021-10-07-12-28-06.png)
+  ![](images/composition2.png)
 
   You can see that service flow includes two tasks:
   - a terraform template **ibmcloud-vpc-nginx-lab** (1), and
@@ -113,21 +120,12 @@ In this tutorial, you will explore the following key capabilities:
 
   ![](images/2021-10-07-12-33-15.png)
 
-  First task provisions a terraform template in IBM Cloud (To see the source code of the template click this [link](https://github.com/dymaczew/cmh-test-github/tree/master/terraform/ibmcloud-vpc-nginx-lab)) When it completes, the second one registers newly provisioned VMs in Ansible Tower inventory so you can run the configuration tasks against them. Let's add a new Ansible task to the flow to configure new virtual machine as web server running Nginx. Since the service is already published, to modify it you have to first create a new version. Go back to the **Service Library** view.
+  First task provisions a terraform template in IBM Cloud (To see the source code of the template click this [link](https://github.com/dymaczew/cmh-test-github/tree/master/terraform/ibmcloud-vpc-nginx-lab)) When it completes, the second one registers newly provisioned VMs in Ansible Tower inventory so you can run the configuration tasks against them. 
+  
+  Let's add a new Ansible task to the flow to configure new virtual machine as web server running Nginx.   
 
-  ![](images/2021-10-07-12-36-25.png)
-
-  In the row **IBMCloud-Nginx-Lab** click the **3 dots** icon on the right, and select **Add version**.
-
-  ![](images/2021-10-07-12-39-08.png)
-
-  Provide unique version name (1) - for example provide your student id number as a last field. Notice, that the version number must be in a format X.Y.Z.V. Finally, click **Add** (2).
-
-  ![](images/2021-05-04-11-49-28.png)
-
-  New version of the service is opened in Service editor. Go to the **Composition** tab (1), unfold the available Ansible tasks on the left (2) and drag-and-drop **Nginx Parametrized** task next to the Ansible inventory task in the flow (3). 
-
-  ![](images/2021-10-07-12-43-46.png)
+  Unfold the **"Ansible"** tasks on the left side (1 and 2).  Then, drag the **Nginx Parameterized** Ansible template to the right side of the **Ansible Inventory** task and let go of the mouse when you see a small square appear and it turns yellow.
+    ![](images/nginxParameterized2.png)
 
   This is a very simple Ansible playbook available [here](https://github.com/dymaczew/rba-ansible-sample/blob/master/nginx_parametrized.yaml), which was imported into connected Ansible Tower and exposed as a Template (All templates  you create in connected Ansible Tower are automatically shown in the Service Editor). For covenience, the source code was also shown below:
 
@@ -167,7 +165,7 @@ In this tutorial, you will explore the following key capabilities:
           state: started
   ```
 
-  Click the newly added task to edit parameters.
+  Click the newly added task to and click on the **Parameter** tab to edit the parameters.
 
   ![](images/2021-10-07-12-48-48.png)
 
@@ -206,15 +204,13 @@ In this tutorial, you will explore the following key capabilities:
 
   ![](images/2021-10-07-13-05-05.png)
 
-  The value field refers to the parameter name that you are just going to create to allow users to provide the value during service request. Click **Parameters** tab on top and then **Create parameter**.
+  The value field refers to the parameter name that allows users to provide the value during service request. 
+  
+ Notice that a parameter named "message" already exists as an input paramter.  This value will be mapped to the Ansible template parameter that you just created.
 
   ![](images/2021-10-07-13-09-57.png)
 
-  In the new dialong provide the `message` as **Parameter key** (1) and for example `Welcome message` as **Display name** (2). This will be the label for the field shown to the user. Finally click **Add** (3).
-
-  ![](images/2021-10-07-13-16-09.png)
-
-  When new parameter is defined, click the **Save** button on the top (1). Then, click "three dots" (2) icon next to Publish button and select **Test deploy** (3).
+Click the **Save** button on the top (1). Then, click "three dots" (2) icon next to Publish button and select **Test deploy** (3).
 
   ![](images/2021-10-07-13-21-30.png)
 
