@@ -8,6 +8,12 @@ In this portion of the lab, you'll learn how to create and execute chargeback re
 
 ## Executing a chargeback report
 
+We must first launch the Infrastructure Management component.  Click on the Hamburger menu in the upper left corner.  
+  ![](images/hamburger.png)
+  
+  Then, select **"Automate Infrastructure->Infrastructure Management"**
+  ![](images/infraMgmt.png)
+
 1) Let's begin by executing an existing chargeback report.  Click the hamburger menu in the top right corner.
   ![](images/2021-05-01-21-35-01.png)
 
@@ -19,12 +25,12 @@ In this portion of the lab, you'll learn how to create and execute chargeback re
 You will see a page with a list of reports that have been executed.  There are two types of reports.  One is named **Container Chargeback** and the other is **VM Chargeback**.  The **Container Chargeback** report will report on the costs of the containerized workloads.  The other report is a report on the Virtual Machine Chargeback.  
   ![](images/reports.png)
 
-Double Click on one of the **Container Chargeback** reports.  You'll see a list of charges for the workloads that are running on kubernetes environments.  The report is organized around the "Projects (Namespaces" running in OpenShift or Kubernetes.  In the report, you can see the usage and cost for the CPU cores, Memory, and Network utilzation.
+Click on one of the **Container Chargeback** reports.  You'll see a list of charges for the workloads that are running on kubernetes environments.  The report is organized around the "Projects (Namespaces" running in OpenShift or Kubernetes.  In the report, you can see the usage and cost for the CPU cores, Memory, and Network utilzation.
   ![](images/containers.png)
 
 Either use the Back button in your browser, or click on **Reports** in the breadcrumb at the top to navigate back to the list of reports.
 
-Double click on one of the **VM Chargeback** reports.  In this report, you can see the usage and cost, grouped by organization, for CPU, Memory, Disk, and Network.
+Click on one of the **VM Chargeback** reports.  In this report, you can see the usage and cost, grouped by organization, for CPU, Memory, Disk, and Network.
   ![](images/vms.png)
 
 
@@ -161,7 +167,7 @@ Next, let's create a Chargeback Report.  For this lab, we'll create a chargeback
   ![](images/2021-05-03-21-10-51.png)
 
 
-18) Click on the data and time to view the report.
+18) Click on the date and time to view the report.
 
 
 19) If desired, you can also schedule your report to run at regular intervals.  To schedule a report, select your report in the Custom folder.  Then, select "Configuration" -> "Add a new Schedule" at the top of the screen.
