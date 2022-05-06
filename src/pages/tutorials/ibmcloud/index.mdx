@@ -13,6 +13,7 @@ description:
   <AnchorLink>Lab Overview</AnchorLink>
   <AnchorLink>Managing infrastructure in public clouds</AnchorLink>
   <AnchorLink>Exploring the cloud providers</AnchorLink>
+    <AnchorLink>Cleanup Environment</AnchorLink>
   <AnchorLink>Summary</AnchorLink>
 </AnchorLinks>
 
@@ -241,13 +242,39 @@ Click the **Save** button on the top (1). Then, click "three dots" (2) icon next
 
   ![](images/2021-10-07-15-01-34.png)
 
-  **NOTE:** If something goes wrong and you receive Error look through the logs to find the problem and ask Instructor for help. If you want to remove the failed instance of your service, first select **Terminate** to remove any provisioned resources and then select **Delete** from service instance actions.
+  **NOTE:** If something goes wrong and you receive Error look through the logs to find the problem and ask Instructor for help. If you want to remove the failed instance of your service, select **Delete** from service instance actions.
 
   If the service is **Active** (with green dot next to it), you can point a new browser tab to see if you can connect to your new service instance.
 
   ![](images/2021-10-07-15-06-40.png)
 
   Congratulations! You have just provisioned new service in public cloud with Terraform template and configured application service there (Nginx web server) with Ansible task.
+
+***
+
+## Cleanup Environment
+Now that you have provisioned a VM, you will go through the process of deleting the provisioned VM and then removing the service that you created.
+
+In the upper right corner, select the 3 vertical dots and then select **Terminate**.  This will delete the provisioned VM.
+  ![](images/terminate.png)
+
+Next, we want to delete the service instance within the Automation product.  
+
+In the upper right corner, select the 3 vertical dots and then select **Delete**.  This will delete the service instance.
+  ![](images/delete.png)
+
+Now that you have deleted the deployed VM and service instance, let's delete the service from the service library.
+
+Select the hamburger menu in the upper left corner.  Then, select **Library** to navigate to the service library.
+  ![](images/library.png)
+
+Find your service (1).  Then, select the 3 vertical dots on the right (2) and select **Delete (3)**
+  ![](images/deleteService.png)
+
+When prompted, type **delete** in the text box and then click on the **Delete** button.
+  ![](images/confirmDelete.png)
+
+After the service has been deleted, click the **Close** button to close the dialog.
 
 ***
 
