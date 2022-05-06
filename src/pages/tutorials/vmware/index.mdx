@@ -87,19 +87,35 @@ This screen contains a list of parameters that are required to provision a virtu
 
 
 19) This log shows you all of the steps that Terraform performed in order to deploy the virtual machine.  You should see a message at the end of the log indicating success
-  ![](images/2021-04-28-21-24-07.png)
+  ![](images/success.png)
 
 
   You have now successfully provisioned a virtual machine via the service library.
 
 
-20) Note:  You can also Terminate and Delete the virtual machine you provisioned.  Normally, you terminate the VM first.  Then you delete the VM.  This is an optional step for the lab. If you want to see how the termination and deletion works, go to the 3 dots in the upper right corner:
-  ![](images/2021-05-01-18-35-32.png)
-   - Select Terminate
-   - Wait for the Terminate to complete.  Then, select Delete
+20) Next, let's clean up the VM that we just deployed.
 
-You have now successfully deployed a virtual machine into VMware and optionally deleted the virtual machine.
+Click on the 3 vertical dots in the upper right corner (1).  Then, select **Terminate (2)**
+ ![](images/terminate.png)
 
+A dialog will open.  Click on the **Terminate** button.
+
+This will delete the provisioned Virtual Machine. 
+
+You'll see a dialog similar to what's shown below.
+ ![](images/terminating.png)
+
+It will say Terminating at the top of the screen.  Wait until the screen says **Terminated**.  Then, click on **View deployed instances** button.
+
+Next, find your service name **studentXX** in the list.  On the right side of that row, select the 3 vertical dots (1) and select **Delete (2) **.
+
+Next, cleanup the Service Instance from within the Automation product.  Again, click on the 3 virtical dots (1).  This time, select **Delete (2)**.
+ ![](images/delete.png)
+
+Finally, confirm the deletion by selecting the **Delete** button in the dialog.
+ ![](images/confirmDelete.png)
+
+After the service instance has been deleted, you'll see a dialog indicating that it was successfully deleted.  Click the **Close** button to close the dialog.
 
 ***
 
@@ -144,7 +160,7 @@ Now let's take a look at how the service was created.  You'll learn how to modif
   ![](images/DuplicateService.png)
 
 
-8) A dialog will open.  At the bottom of the dialog you will see a name that was automatically populated with "Copy of VMware Single VM with DHCP".   Note:  you may have to scroll down within the dialog in order to see the "Name" field.  Change the name to a name that begins with your username. For example, "student37 VMware service".  Then, click the "Duplicate" button.
+8) A dialog will open.  Scroll to the bottom of the dialog where you will see a name that was automatically populated with "Copy of VMware Single VM with DHCP".  Change the name to a name that begins with your username. For example, "student37 VMware service".  Then, click the "Duplicate" button.
 
 
   ![](images/DuplicateService2.png)
@@ -200,7 +216,10 @@ Now let's take a look at how the service was created.  You'll learn how to modif
   ![](images/2021-05-01-21-11-18.png)
 
 
-At this point, you aren't going to actually deploy the service.  Continue on to the next section of the lab.
+Since you have already deployed this VMware service, you are NOT going to do the deployment.
+
+Instead, click on **Service Library** in the upper left corner.
+  ![](images/serviceLibrary.png)
 
 
 You have now explored and modified a service.  The next step is to explore the Composition user interface.
@@ -270,8 +289,9 @@ Now, let's explore the Composition user interface.  You can use the Composition 
   ![](images/2021-04-30-11-00-05.png)
 
 
-9) As shown above, select the "Demo Job Template" Ansible Tower template and drag it over to the Composition area.  As you drag the Ansible Tower template, you'll notice that boxes appear on the composition screen.  You can drop the template on any one of the boxes.   After a few seconds that Ansible Tower template will appear on the screen.  In order to make this functional, you would need to define Parameters to pass between components of the service composition.   We won't do that in this portion of the lab.  The "IBM Cloud Automation" portion of the lab will go into a little more detail.
+9) As shown above, select the "Demo Job Template" Ansible Tower template and drag it over to the Composition area.  As you drag the Ansible Tower template, you'll notice that boxes appear on the composition screen.  You can drop the template on any one of the boxes.   After a few seconds that Ansible Tower template will appear on the screen.  
   ![](images/2021-04-30-11-03-55.png)
+In order to make this functional, you would need to define Parameters to pass between components of the service composition.   We won't do that in this portion of the lab.  The "IBM Cloud Automation" portion of the lab will go into a little more detail on modifying the service composition.
 
 
 10) Click on "<- Service Library" in the upper left corner to navigate back to the main page.  
@@ -362,20 +382,29 @@ You have modified your Service and changed the menus.  Now, let's make it availa
   ![](images/2021-04-30-12-14-10.png)
 
 
-11) Click on "Return to main navigation"
-  ![](images/2021-04-30-12-02-33.png)
-
-
 12) Select the hamburger menu in the top left.
   ![](images/2021-04-30-12-05-14.png) 
   
 
-13) Then select Automate Infrastructure -> Service library
-  ![](images/2021-04-30-12-04-22.png)
+13) Then select Automate Infrastructure -> Service Catalog
+  ![](images/serviceCatalog2.png)
 
 
   Notice that your service "studentXX VMware service" shows up in the Service Library
   ![](images/2021-04-30-12-40-45.png)
+
+Let's cleanup the service that you created for this lab.
+
+In the upper left corner, select the hamburger menu.  Then, select **Library**
+  ![](images/library.png)
+
+Find your Service, **StudentXX VMware Single VM with DHCP**, in the list.  Then, select the 3 vertical dots (1) and select **Delete** (2).
+  ![](images/deleteService.png)
+
+A dialog will open asking you to confirm that you want to delete the service.  In the diaglog, type the word **delete** in the text box.  Then, click the **Delete** button.
+  ![](images/deleteService2.png)
+
+Click the **Close** button on the next dialog.
 
 
 You have now completed the section of the lab on automating tasks in VMware environments.
